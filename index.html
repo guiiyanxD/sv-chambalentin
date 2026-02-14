@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín 💝</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffc3d5 0%, #ffb3c6 50%, #ffd4e5 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Corazones flotantes de fondo */
+        .heart-bg {
+            position: absolute;
+            font-size: 20px;
+            animation: float 15s infinite;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.1;
+            }
+            90% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .heart-icon {
+            font-size: 80px;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10%, 30% {
+                transform: scale(1.1);
+            }
+            20%, 40% {
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .message {
+            font-size: 1.3em;
+            color: #6b4d57;
+            margin: 30px 0;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .highlight {
+            color: #c7365f;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, #ff9ebb, #d63384);
+            margin: 30px auto;
+            border-radius: 2px;
+        }
+
+        .final-message {
+            font-size: 1.1em;
+            color: #6b4d57;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 158, 187, 0.15);
+            border-radius: 15px;
+            border-left: 4px solid #ff9ebb;
+        }
+
+        .signature {
+            margin-top: 40px;
+            font-size: 1.2em;
+            color: #d63384;
+            font-weight: bold;
+        }
+
+        /* Efecto de confeti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 25px;
+                margin: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .message {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Corazones de fondo -->
+    <div class="heart-bg" style="left: 10%; animation-delay: 0s;">💝</div>
+    <div class="heart-bg" style="left: 30%; animation-delay: 2s;">💕</div>
+    <div class="heart-bg" style="left: 50%; animation-delay: 4s;">💖</div>
+    <div class="heart-bg" style="left: 70%; animation-delay: 1s;">💗</div>
+    <div class="heart-bg" style="left: 90%; animation-delay: 3s;">💝</div>
+
+    <div class="container">
+        <div class="heart-icon">💝</div>
+        
+        <h1>Para que no solo sea<br>Chambalentín</h1>
+        
+        <div class="divider"></div>
+        
+        <div class="message">
+            Porque este 14 de febrero,<br>
+            <span class="highlight">no seas expectadora</span>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="final-message">
+            Gracias por estar ahí, por las risas, por los momentos compartidos y por ser 
+            exactamente como eres. 
+        </div>
+        
+        <div class="signature">
+            Con cariño 💜
+        </div>
+    </div>
+
+    <script>
+        // Crear confeti aleatorio
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.animationDelay = Math.random() * 3 + 's';
+            confetti.style.backgroundColor = ['#ff9ebb', '#ffc3d5', '#d63384', '#ffb3c6'][Math.floor(Math.random() * 4)];
+            document.body.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 3000);
+        }
+        
+        // Generar confeti cada cierto tiempo
+        setInterval(createConfetti, 300);
+    </script>
+</body>
+</html>
